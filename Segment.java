@@ -16,7 +16,7 @@ public class Segment
     //color del segmento
     private Color color;
     //longitud del segmento
-    private static final int LONGITUD_SEGMENTO = 4;
+    public static final int LONGITUD_SEGMENTO = 4;
 
     /**
      * Constructor for objects of class Segment
@@ -107,11 +107,6 @@ public class Segment
      */
     public boolean colisionaCon(Segment segmento)
     {
-        boolean colisiona = false;
-        if (segmento.getPosicionFinalX() == getPosicionInicialX() && segmento.getPosicionFinalY() == getPosicionInicialY())
-        {
-            colisiona = true;
-        }
-        return colisiona;
+        return segmento.getPosicionFinalX() == posicionX && segmento.getPosicionFinalY() == posicionX;
     }
 }
