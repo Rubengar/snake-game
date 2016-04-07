@@ -18,13 +18,26 @@ public class SnakeGame
     {
         lienzo = new Canvas("Serpiente",ANCHO_LIENZO,ALTO_LIENZO);
     }
+
     /**
 
      */
     public void drawSnake()
     {
-      serpiente = new Snake(ANCHO_LIENZO,ALTO_LIENZO);
-      lienzo.erase();
-      serpiente.dibujar(lienzo); 
+        serpiente = new Snake(ANCHO_LIENZO,ALTO_LIENZO);
+        lienzo.erase();
+        serpiente.dibujar(lienzo); 
+    }
+
+    public void animateSnake()
+    {
+        drawSnake();
+        boolean noChoca = true ;
+        while(noChoca){
+            serpiente.borrar(lienzo);
+            noChoca=serpiente.mover();
+            serpiente.dibujar(lienzo);
+            lienzo.wait(20);
+        }
     }
 }

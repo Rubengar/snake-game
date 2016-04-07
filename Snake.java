@@ -52,7 +52,9 @@ public class Snake
     {
         for (Segment segmento : segmentos) {
             segmento.borrar(lienzo);
-        }             
+        }
+        Segment ultimoSegmento = segmentos.get(segmentos.size()-1);
+        lienzo.eraseCircle(ultimoSegmento.getPosicionFinalX()-(TAMANO_CABEZA/2),ultimoSegmento.getPosicionFinalY()-(TAMANO_CABEZA/2), TAMANO_CABEZA);
     }
 
     /*
@@ -149,17 +151,6 @@ public class Snake
         if(addSegment())
         {
             segmentos.remove(0);
-            Random aleatorio = new Random();
-            int x = segmentos.get(segmentos.size()-1).getPosicionFinalX();
-            int y = segmentos.get(segmentos.size()-1).getPosicionFinalY();
-            ArrayList<Integer> direcciones = new ArrayList<>();
-            int direccion = direcciones.remove(aleatorio.nextInt(direcciones.size()));
-            
-            for (int i = 0; i < 4; i++) {
-                direcciones.add(i * DIFERENCIA_DE_GRADOS_ENTRE_DIRECCIONES);
-            }
-            Segment nuevo = new Segment(x,y,direccion,color);
-            segmentos.add(nuevo);
             mover = true;
         }
         return mover;
